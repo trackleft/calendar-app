@@ -37,7 +37,10 @@ function UpdateTableHeaders(){
            floatingHeader.css({
             "visibility": "hidden"
            });      
-        };
+      
+
+
+		};
 	});
 }
 
@@ -57,3 +60,10 @@ $(window)
 	.scroll(UpdateTableHeaders)
 	.trigger('scroll');
 });
+
+  // $(function() {
+  //   $( "#datepicker" ).datepicker({numberOfMonths:[3,1],showOtherMonths: true,
+  //     selectOtherMonths: true});
+  // });
+
+  //$( ".selector" ).datepicker({ numberOfMonths: [ 2, 3 ] });

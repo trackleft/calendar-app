@@ -14,22 +14,29 @@ function createWeek(startDate){
 	while (i<7){
 		var date = startDate.addDays(1); 
 		var dayNumber = date.toString('dd');
+		var dayName = date.toString('dddd');
 		var monthNumber = date.toString('MM');
+		var monthName = date.toString('MMM');
 		function isOdd(num) { return num % 2;};
 		var monthClass = 'evenMonth'
 		if (isOdd(monthNumber*1)) {
 			monthClass = 'oddMonth';
 		};
 		var day = document.createElement('td');
-		var dayClass = 'picker-day '+monthClass;
+		var dayClass = dayName+' picker-day '+monthClass;
 				if (Date.today().toString('dd') == dayNumber) {
 					dayClass = dayClass+' today';
 		};
 		day.setAttribute('class',dayClass);
 		day.setAttribute('id',monthNumber+'-'+dayNumber);
 		var dayDiv = document.createElement('div');
+		dayDiv.setAttribute('class','dayDiv');
+		var monDiv = document.createElement('div');
+		monDiv.setAttribute('class','monDiv');
 		document.getElementById(weekID).appendChild(day);
+		document.getElementById(monthNumber+'-'+dayNumber).appendChild(monDiv);
 		document.getElementById(monthNumber+'-'+dayNumber).appendChild(dayDiv);
+		monDiv.innerHTML = monthName;
 		dayDiv.innerHTML = dayNumber;
 		i++;
 	}
