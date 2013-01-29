@@ -1,0 +1,16 @@
+.event-image {
+float: left;
+padding-right: 10px;
+padding-bottom: 10px;
+padding-top: 10px;
+}
+.event-image img{
+max-height: 100px;
+max-width: 100px;
+}
+.time {
+display: inline-block;
+}
+.event-title {
+display: inline-block;
+}

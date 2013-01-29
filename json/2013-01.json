@@ -1,0 +1,22 @@
+{
+   "data": [
+       {
+         "id": "3",
+         "name": "Event 3",
+         "description": "Test Event 3",
+         "type": "event",
+         "start_time": "2013-01-02T18:30:44+0000",
+         "end_time": "2013-01-02T19:00:44+0000",
+         "ap": "6:30 p.m."
+      },
+      {
+         "id": "4",
+         "name": "Event 4",
+         "description": "Test Event 4",
+         "type": "event",
+         "start_time": "2013-01-02T21:30:44+0000",
+         "end_time": "2013-01-02T24:00:44+0000",
+         "ap": "9:30 p.m."
+      }
+   ]
+}
