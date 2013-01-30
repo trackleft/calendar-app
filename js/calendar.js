@@ -54,7 +54,7 @@ function pageDatepicker(){
 	var pixels = $("#calendarTable").height();
 	var pixelTop = $("#datepicker").scrollTop();
 	 if (pixels-pixelTop*1<220) {
-		document.getElementById('pixelCount').innerHTML = pixels+', '+pixelTop;
+		// document.getElementById('pixelCount').innerHTML = pixels+', '+pixelTop;
 		// alert(pixels);
 		createMonth(startDate)
 	};
