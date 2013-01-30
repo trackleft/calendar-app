@@ -44,9 +44,22 @@ function createWeek(startDate){
 
 function createMonth(startDate){
 	var j = 0;
-	while (j<5){
+	while (j<8){
 		createWeek(startDate);
 		j++;
 	}
 }
 
+function pageDatepicker(){
+	var pixels = $("#calendarTable").height();
+	var pixelTop = $("#datepicker").scrollTop();
+	 if (pixels-pixelTop*1<220) {
+		document.getElementById('pixelCount').innerHTML = pixels+', '+pixelTop;
+		// alert(pixels);
+		createMonth(startDate)
+	};
+}
+
+	// $(window).scroll(function(){
+	// 	alert("scrolling!");
+	// });

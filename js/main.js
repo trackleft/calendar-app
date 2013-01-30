@@ -2,6 +2,7 @@ $('#mobile-button').click( function() {
 $("#calendar-fixed-filter").css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
 });
 
+//Making the page responsive.
 function resizeElementHeight(element) {
   var element=document.getElementById('calendar-filters');
   var height = 0;
@@ -20,6 +21,7 @@ onload=createMonth(startDate);
 window.onresize=resizeElementHeight;
 
 
+//The function that makes the dated headers float.
 function UpdateTableHeaders(){
 	$('.day').each(function(){
 
@@ -60,6 +62,10 @@ $(window)
 	.scroll(UpdateTableHeaders)
 	.trigger('scroll');
 });
+	$('#datepicker').scroll(function(){
+		pageDatepicker();
+	});
+
 
   // $(function() {
   //   $( "#datepicker" ).datepicker({numberOfMonths:[3,1],showOtherMonths: true,

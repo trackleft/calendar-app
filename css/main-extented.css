@@ -799,6 +799,13 @@ color: rgb(54, 54, 54);
 .span3 {
   font-size: 15px;
 }
+
+#datepicker{
+  width: 240px;
+  height: 220px;
+  overflow: scroll;
+}
+
 #datepicker .today {
   background-color: #002147;
   color: #efefef;
