@@ -363,6 +363,13 @@ height: 16px;
 overflow: visible;
 width: 16px;
 }
+.right{
+  float:right;
+}
+
+.left{
+  float:left;
+}
 ::-webkit-scrollbar-thumb {
 background-color: rgba(0, 0, 0, .2);
 background-clip: padding-box;
