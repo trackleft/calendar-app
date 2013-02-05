@@ -116,7 +116,6 @@ padding: 0;
 }
 
 .month-nav li {
-color: #363636;
 display: inline-block;
 font-family: helvetica;
 height: 40px;
@@ -814,7 +813,7 @@ background: #eee;
   overflow: scroll;
 }
 
-#datepicker .today {
+.today {
   background-color: #002147;
   color: #efefef;
 }
@@ -824,6 +823,11 @@ background: #eee;
   width: 3px;
   text-align: center;
 }
+
+.picker-day:hover, .picker-day a{
+  color: white;
+}
+
 
 .past-day {
   color: purple;
@@ -864,6 +868,11 @@ background: #eee;
 
 .Saturday:hover {
   background: #ffd18b;
+}
+
+.active {
+  background-color: #002147;
+  color: #efefef;
 }
 /* ==========================================================================
    Helper classes

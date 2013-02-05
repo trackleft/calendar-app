@@ -63,6 +63,25 @@ function pageDatepicker(){
 	};
 }
 
+function createYear(){
+	var monthBox = document.getElementById('monthList'); //get the container
+	 var startMonth = Date.today().add(-4).months();//get the current month minus four to start.
+	var k = 0;
+	while (k<12){
+		var month = document.createElement('li'); //create a new list item
+		month.setAttribute('class','key'); //set the class to "key"
+		month.innerHTML = startMonth.toString('MMM');
+		month.setAttribute('id',startMonth.toString('MMM')+"-"+startMonth.toString('yyyy')); //set the id to the year and the month
+		if (startMonth.toString('MMM')==Date.today().toString('MMM')){
+		month.setAttribute('class','key today');
+		} //check if it's this month and apply active class
+		monthBox.appendChild(month);
+		startMonth.addMonths(1); //add a month to current month
+		k++;
+	}
+
+}
+
 	// $(window).scroll(function(){
 	// 	alert("scrolling!");
 	// });

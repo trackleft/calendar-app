@@ -18,6 +18,7 @@ function resizeElementHeight(element) {
 }
 onload=resizeElementHeight;
 onload=createMonth(startDate);
+onload=createYear();
 window.onresize=resizeElementHeight;
 
 
