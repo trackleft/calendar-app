@@ -26,7 +26,10 @@ function createWeek(startDate){
 		var dayClass = dayName+' picker-day '+monthClass;
 				if (Date.today().compareTo(date)==0) {
 					dayClass = dayClass+' today';
-		};
+				};
+				if (Date.today().compareTo(date)==1) {
+					dayClass = dayClass+' past-day';
+				}
 		day.setAttribute('class',dayClass);
 		day.setAttribute('id',yearNumber+'-'+monthNumber+'-'+dayNumber);
 		var dayDiv = document.createElement('div');
