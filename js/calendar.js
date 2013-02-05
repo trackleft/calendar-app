@@ -4,12 +4,12 @@ else {startDate = Date.today().last().week().last().sunday().addDays(-1)}
 
 function createWeek(startDate){
 	var weekNumber = startDate.getISOWeek();
-	var yearNumber = startDate.getYear();
+	var yearNumber = startDate.toString('yyyy');
 	var week = document.createElement('tr');
 	var weekID = yearNumber+'week'+weekNumber;
 	week.setAttribute('id', weekID);
 	document.getElementById('calendarTable').appendChild(week);
-
+	document.getElementById('yearDiv').innerHTML = yearNumber;
 	var i = 0;
 	while (i<7){
 		var date = startDate.addDays(1); 
@@ -24,18 +24,18 @@ function createWeek(startDate){
 		};
 		var day = document.createElement('td');
 		var dayClass = dayName+' picker-day '+monthClass;
-				if (Date.today().toString('dd') == dayNumber) {
+				if (Date.today().compareTo(date)==0) {
 					dayClass = dayClass+' today';
 		};
 		day.setAttribute('class',dayClass);
-		day.setAttribute('id',monthNumber+'-'+dayNumber);
+		day.setAttribute('id',yearNumber+'-'+monthNumber+'-'+dayNumber);
 		var dayDiv = document.createElement('div');
 		dayDiv.setAttribute('class','dayDiv');
 		var monDiv = document.createElement('div');
 		monDiv.setAttribute('class','monDiv');
 		document.getElementById(weekID).appendChild(day);
-		document.getElementById(monthNumber+'-'+dayNumber).appendChild(monDiv);
-		document.getElementById(monthNumber+'-'+dayNumber).appendChild(dayDiv);
+		document.getElementById(yearNumber+'-'+monthNumber+'-'+dayNumber).appendChild(monDiv);
+		document.getElementById(yearNumber+'-'+monthNumber+'-'+dayNumber).appendChild(dayDiv);
 		monDiv.innerHTML = monthName;
 		dayDiv.innerHTML = dayNumber;
 		i++;

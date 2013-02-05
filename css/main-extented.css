@@ -798,6 +798,7 @@ right: 51px;
 
 .evenMonth {
 color: rgb(54, 54, 54);
+background: #eee;
 }
 .oddMonth{
   color:#999999;
@@ -821,10 +822,48 @@ color: rgb(54, 54, 54);
 .picker-day {
   height: 3px;
   width: 3px;
+  text-align: center;
 }
 
 .past-day {
   color: purple;
+}
+
+.monDiv {
+  font-size: .75em;
+  width: 28px;
+}
+
+.dayDiv {
+  font-weight: bolder;
+}
+
+.Sunday:hover {
+  background: #e5c19f;
+}
+
+.Monday:hover {
+  background: #781d7e;
+}
+
+.Tuesday:hover {
+ background: #d492b3;
+}
+
+.Wednesday:hover {
+  background: #008c7f;
+}
+
+.Thursday:hover {
+  background: #93a445;
+}
+
+.Friday:hover {
+  background: #572700;
+}
+
+.Saturday:hover {
+  background: #ffd18b;
 }
 /* ==========================================================================
    Helper classes
