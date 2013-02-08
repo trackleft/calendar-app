@@ -65,7 +65,7 @@ function pageDatepicker(){
 
 function createYear(){
 	var monthBox = document.getElementById('monthList'); //get the container
-	 var startMonth = Date.today().add(-4).months();//get the current month minus four to start.
+	 var startMonth = Date.today().add(-3).months();//get the current month minus four to start.
 	var k = 0;
 	while (k<12){
 		var month = document.createElement('li'); //create a new list item
