@@ -116,7 +116,6 @@ padding: 0;
 }
 
 .month-nav li {
-color: #363636;
 display: inline-block;
 font-family: helvetica;
 height: 40px;
@@ -798,6 +797,7 @@ right: 51px;
 
 .evenMonth {
 color: rgb(54, 54, 54);
+background: #eee;
 }
 .oddMonth{
   color:#999999;
@@ -813,7 +813,7 @@ color: rgb(54, 54, 54);
   overflow: scroll;
 }
 
-#datepicker .today {
+.today {
   background-color: #002147;
   color: #efefef;
 }
@@ -821,10 +821,58 @@ color: rgb(54, 54, 54);
 .picker-day {
   height: 3px;
   width: 3px;
+  text-align: center;
 }
+
+.picker-day:hover, .picker-day a{
+  color: white;
+}
+
 
 .past-day {
   color: purple;
+}
+
+.monDiv {
+  font-size: .75em;
+  width: 28px;
+}
+
+.dayDiv {
+  font-weight: bolder;
+}
+
+.Sunday:hover {
+  background: #e5c19f;
+}
+
+.Monday:hover {
+  background: #781d7e;
+}
+
+.Tuesday:hover {
+ background: #d492b3;
+}
+
+.Wednesday:hover {
+  background: #008c7f;
+}
+
+.Thursday:hover {
+  background: #93a445;
+}
+
+.Friday:hover {
+  background: #572700;
+}
+
+.Saturday:hover {
+  background: #ffd18b;
+}
+
+.active {
+  background-color: #002147;
+  color: #efefef;
 }
 /* ==========================================================================
    Helper classes
