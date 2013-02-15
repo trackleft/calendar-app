@@ -1,4 +1,114 @@
 /*
+ ------------------------------------------------------------------------------
+ |
+ | Font Icons, DUH! Of course these should load first!
+ |
+ ------------------------------------------------------------------------------
+*/
+@font-face {
+font-family: 'icomoon';
+src:url('../fonts/icomoon.eot');
+src:url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+url('../fonts/icomoon.woff') format('woff'),
+url('../fonts/icomoon.ttf') format('truetype'),
+url('../fonts/icomoon.svg#icomoon') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+.ico-food:before, .ico-aid:before, .ico-library:before, .ico-camera:before, .ico-map:before, .ico-books:before, .ico-magnet:before, .ico-link:before, .ico-home:before, .ico-office:before, .ico-home-2:before, .ico-home-3:before, .ico-map-2:before, .ico-compass:before, .ico-location:before, .ico-location-2:before, .ico-shield:before, .ico-accessibility:before, .ico-trophy:before, .ico-bullhorn:before, .ico-road:before, .ico-airplane:before, .ico-cone:before, .ico-apple:before, .ico-print:before, .ico-switch:before, .ico-question:before, .ico-search:before {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+.ico-food:before {
+  content: "\e000";
+}
+.ico-aid:before {
+  content: "\e001";
+}
+.ico-library:before {
+  content: "\e002";
+}
+.ico-camera:before {
+  content: "\e003";
+}
+.ico-map:before {
+  content: "\e004";
+}
+.ico-books:before {
+  content: "\e005";
+}
+.ico-magnet:before {
+  content: "\e006";
+}
+.ico-link:before {
+  content: "\e007";
+}
+.ico-home:before {
+  content: "\e008";
+}
+.ico-office:before {
+  content: "\e009";
+}
+.ico-home-2:before {
+  content: "\e00a";
+}
+.ico-home-3:before {
+  content: "\e00b";
+}
+.ico-map-2:before {
+  content: "\e00c";
+}
+.ico-compass:before {
+  content: "\e00d";
+}
+.ico-location:before {
+  content: "\e00e";
+}
+.ico-location-2:before {
+  content: "\e00f";
+}
+.ico-shield:before {
+  content: "\e010";
+}
+.ico-accessibility:before {
+  content: "\e011";
+}
+.ico-trophy:before {
+  content: "\e012";
+}
+.ico-bullhorn:before {
+  content: "\e013";
+}
+.ico-road:before {
+  content: "\e014";
+}
+.ico-airplane:before {
+  content: "\e015";
+}
+.ico-cone:before {
+  content: "\e016";
+}
+.ico-apple:before {
+  content: "\e017";
+}
+.ico-print:before {
+  content: "\e018";
+}
+.ico-switch:before {
+  content: "\e019";
+}
+.ico-question:before {
+  content: "\e01a";
+}
+.ico-search:before {
+  content: "\e01b";
+}
+/*
+/*
  * HTML5 Boilerplate
  *
  * What follows is the result of much research on cross-browser styling.
@@ -179,9 +289,9 @@ li.key:hover{
 }
 .floatingHeader {
 position: fixed;
-top: 102px;
-left: -1px;
-margin-left: 22px;
+top: 42px;
+left: 0px;
+margin-left: 16px;
 background: white;
 visibility: hidden;
 width: 678px;
@@ -266,6 +376,10 @@ font-weight: bold;
 .ongoing-dates label {
 margin: 0 .5em;
 }
+
+
+
+
 .row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";line-height:0;}
 .row:after{clear:both;}
 [class*="span"]{float:left;min-height:1px;margin-left:20px;}
@@ -345,43 +459,47 @@ margin: 0 .5em;
    border-left: 10px solid #AB0520;
 } */
 .image-event{
-    height: 100px;
-    overflow: hidden;
+height: 100px;
+overflow: hidden;
 }
-.span3.fixed {
+.span3.fixed.right-side-tools.visible {
 position: fixed;
 right: 0px;
-width: 210px;
-top: 105px;
--webkit-border-radius: 0 0 5px 5px;
--moz-border-radius: 0 0 5px 5px;
-border-radius: 0 0 5px 5px;
-border-left: 1px solid rgb(215, 215, 215);
-padding-left: 25px;
-padding-right: 10px;
+width: 85%;
+top: 42px;
+border-left: 1px solid #D7D7D7;
+padding-left: 5px;
+}
+.span3.fixed.right-side-tools {
+position: fixed;
+right: -406px;
+width: 400px;
+top: 42px;
+border-left: 1px solid #D7D7D7;
+padding-left: 5px;
+-webkit-transform: translate3d(0px, 0px, 0px);
+-webkit-transition: all 0.4s ease;
+}
+.span3.fixed.right-side-tools.visible .filter-toggle-button.brillant {
+position: absolute;
+left: -40px;
+}
+
+.span3.fixed.right-side-tools .filter-toggle-button.brillant {
+position: absolute;
+left: -40px;
+height: 96px;
+width: 40px;
+border: 1px solid #EFEFEF;
+border-right: 0;
+cursor: pointer;
+top: 40%;
 }
 ::-webkit-scrollbar {
 height: 16px;
 overflow: visible;
-width: 16px;
+width: 10px;
 }
-.right{
-  float:right;
-}
-
-.left{
-  float:left;
-}
-::-webkit-scrollbar-thumb {
-background-color: rgba(0, 0, 0, .2);
-background-clip: padding-box;
-border: solid transparent;
-border-width: 1px 1px 1px 6px;
-min-height: 28px;
-padding: 100px 0 0;
-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1),inset 0 -1px 0 rgba(0, 0, 0, .07);
-}
-
 .now-sticky {
 position: fixed;
 top: 102px;
@@ -391,7 +509,18 @@ width: 688px;
 //webkit-transform: translate3d(230px, 0px, 0px);
 //-webkit-transition: all 0.4s ease;
 }
+.no-js span3.fixed {
+position: fixed;
+right: -230px;
+width: 230px;
+border: 1px solid rgb(239, 239, 239);
+  }
 
+.surface {
+border-left: 1px solid #D7D7D7;
+background-color: white;
+padding: 0 0px 0px 0px;
+}
 .topbar.shadow {
 -webkit-mask-box-image: -webkit-linear-gradient(left,transparent 0%,rgba(0,0,0,.8) 50%,transparent 100%);
 background-color: transparent;
@@ -406,7 +535,7 @@ right: 245px;
 margin: -1px 0 -9px 0;
 position: fixed;
 left: 0px;
-top: 103px;
+top: 42px;
 z-index: 11;
 }
 .asdf-line{
@@ -763,41 +892,13 @@ img.feature-full {
 
 }
 
-@media all and (max-width: 800px) {
 
-.csstransforms3d .span3.fixed {
--webkit-transform: translate3d(230px, 0px, 0px);
--webkit-transition: all 0.4s ease;
-
-background-color: #FFF;
-}
-
-.no-js span3.fixed {
-position: fixed;
-right: -230px;
-width: 230px;
-background-color: #FFF;
-  }
-  .row-fluid .span9.calendar {
-width: 100%;
-margin-right: 0px !important;
-padding-right: 10px;
-  }
-#mobile-button {
-display: block;
-width: 39px;
-height: 85px;
-background-color: #AB0520;
-position: relative;
-top: 382px;
-right: 51px;
-}
-
-}
 /* ==========================================================================
    Navigation Calendar
    ========================================================================== */
-
+#monthList {
+display: none;
+}
 .evenMonth {
 color: rgb(54, 54, 54);
 background: #eee;
@@ -810,21 +911,23 @@ background: #eee;
   font-size: 15px;
 }
 
-#datepicker{
-  width: 240px;
-  height: 220px;
-  overflow: scroll;
+#datepicker {
+width: 100%;
+height: 220px;
+overflow: scroll;
 }
 
 .today {
   background-color: #002147;
   color: #efefef;
 }
-
+#calendarTable {
+width: 100%;
+}
 .picker-day {
   height: 3px;
-  width: 3px;
-  text-align: center;
+/*  width: 16%;
+*/  text-align: center;
 }
 
 .picker-day:hover, .picker-day a{
@@ -839,7 +942,7 @@ background: #eee;
 
 .monDiv {
   font-size: .75em;
-  width: 28px;
+  /*width: 28px;*/
 }
 
 .dayDiv {
@@ -878,6 +981,176 @@ background: #eee;
   background-color: #002147;
   color: #efefef;
 }
+/*
+ ------------------------------------------------------------------------------
+ |
+ | checkbox on/off switch
+ |
+ ------------------------------------------------------------------------------
+*/
+.azbutton-tag {
+border: 1px solid #EFEFEF;
+border-left: 0;
+border-right: 0;
+padding-left: 8px;
+padding-top: 5px;
+height: 36px;
+margin-top: -1px;
+}
+.arizona-btn-group .label {
+text-align: left;
+vertical-align: middle;
+margin-right: 5px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+padding-top: 5px;
+font-variant: small-caps;
+text-transform: lowercase;
+font-size: 18px;
+letter-spacing: 1px;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-o-user-select: none;
+user-select: none;
+cursor: pointer;
+}
+.arizona-btn.brillant.checkbox {
+padding: 9px 10px;
+float: right;
+position: relative;
+right: 4px;
+}
+.imagery .label {
+width: 129px;
+}
+
+.basemap{
+  width:50px;
+}
+input[type="checkbox"]:checked+label.button-tag .checkbox-square{
+background-color:#93A445;
+-moz-box-shadow:  0 0 5px #93A445;
+-webkit-box-shadow:  0 0 5px #93A445;
+box-shadow:  0 0 5px #93A445;
+}
+.checkbox-square{
+  height:10px;
+  width: 10px;
+  -moz-box-shadow: inset 0 0 5px #888;
+-webkit-box-shadow: inset 0 0 5px#888;
+box-shadow: inner 0 0 5px #888;
+}
+.layer-controls-table {
+padding: 13px;
+}
+
+.layer-controls-table button.arizona-btn {
+background-color: white;
+border: 1px solid rgb(239, 239, 239);
+padding: 4px 4px 4px 4px;
+vertical-align: middle;
+}
+
+input.checkbox{display: none;}
+
+.btn {
+display: inline-block;
+border-radius: 0;
+margin-top: -1px;
+}
+button.arizona-btn{
+background-color: white;
+border: 1px solid #EFEFEF;
+padding: 4px 8px 4px 8px;
+}
+
+/*
+ ------------------------------------------------------------------------------
+ |
+ | Search Form
+ |
+ ------------------------------------------------------------------------------
+*/
+.search-cell {
+border: 1px solid #efefef;
+margin-top: -1px;
+padding-left: 5px;
+padding-top: 4px;
+}
+form.form-search{
+  margin-bottom: 5px;
+}
+form.form-search button.btn{
+  background-color: #AB0520;
+  display: inline-block;
+padding: 4px 9px;
+margin-bottom: 0;
+font-size: 14px;
+line-height: 20px;
+text-align: center;
+vertical-align: middle;
+cursor: pointer;
+color: #FFFFFF;
+text-shadow: none;
+background-color: #AB0520;
+background-image: none;
+background-image: none;
+background-image: none;
+background-image: none;
+background-image: none;
+background-repeat: repeat-x;
+filter: s;
+border-color: transparent;
+border-color: transparent;
+filter: none;
+border: 1px solid rgb(239, 239, 239);
+border-bottom-color: rgb(239, 239, 239);
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+-webkit-box-shadow: transparent;
+-moz-box-shadow: transparent;
+box-shadow: transparent;
+margin-left: 0;
+}
+
+input.search-query {
+padding-right: 14px;
+padding-right: 4px 9;
+padding-left: 14px;
+padding-left: 4px 9;
+margin-bottom: 0;
+-webkit-border-radius: 0px;
+-moz-border-radius: 0px;
+border-radius: 0px;
+}
+input[type="text"]:focus {
+border-color: rgb(171, 5, 32);
+outline: 0;
+outline: thin dotted 9;
+/*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(171, 5, 32, .6);
+-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(171, 5, 32,.6);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(171, 5, 32, .6);*/
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+}
+input[type="text"] {
+background-color: white;
+border: 1px solid rgb(239, 239, 239);
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+-moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+-webkit-transition: border linear .2s, box-shadow linear .2s;
+-moz-transition: border linear .2s, box-shadow linear .2s;
+-o-transition: border linear .2s, box-shadow linear .2s;
+transition: border linear .2s, box-shadow linear .2s;
+}
+form.form-search .input-medium {
+width: 161px;
+height: 24px;
+}
+/*
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -978,7 +1251,17 @@ background: #eee;
 .clearfix {
     *zoom: 1;
 }
+.right{
+  float:right;
+}
 
+.left{
+  float:left;
+}
+.brillant {
+background-color: rgba(255, 255, 255, .9);
+background-image: url(../img/brillant.png);
+}
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    Theses examples override the primary ('mobile first') styles.
@@ -1068,4 +1351,32 @@ background: #eee;
 font-size: 1em;
 margin: 0 0 1.33em 0;
 }
+}
+
+
+@media only screen and (min-width:800px) {
+
+  .csstransforms3d .span3.fixed {
+  -webkit-transform: translate3d(230px, 0px, 0px);
+  -webkit-transition: all 0.4s ease;
+  background-color: #FFF;
+  }
+.span3.fixed.right-side-tools.visible {
+position: fixed;
+right: 222px;
+width: 250px;
+top: 42px;
+border-left: 1px solid #D7D7D7;
+padding-left: 5px;
+}
+.span3.fixed.right-side-tools.visible .filter-toggle-button.brillant {
+display: none;
+}
+
+  .row-fluid .span9.calendar {
+  width: 100%;
+  margin-right: 0px !important;
+  padding-right: 10px;
+  }
+
 }
