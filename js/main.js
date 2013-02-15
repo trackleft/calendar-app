@@ -16,10 +16,12 @@ function resizeElementHeight(element) {
   }
    element.style.height = ((height - element.offsetTop - 150) + 'px');
 }
-onload=resizeElementHeight;
+
 onload=createMonth(startDate);
 onload=initialPastMonth();
 onload=createYear();
+onload=makeEventMonth(Date.today());
+onload=resizeElementHeight;
 window.onresize=resizeElementHeight;
 
 
@@ -48,7 +50,7 @@ function UpdateTableHeaders(){
 	});
 }
 
-$(function(){
+	$(function(){
 
 	var clonedHeaderRow;
 

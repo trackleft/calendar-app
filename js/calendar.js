@@ -1,3 +1,5 @@
+	var startDate;
+
 $(document).ready(function() {
    $.localScroll({
    	duration:800,
@@ -5,9 +7,21 @@ $(document).ready(function() {
    	lazy:true,
    	hash:false
    	});
+   $('#monthList a').click(function(){
+   	var month = Date.parse(this.firstChild.id);
+   	 while (month.compareTo(startDate)==1){
+   	 	createMonth(startDate);
+   	 }
+   	var earliestDayID = document.getElementById('calendarTable').firstChild.firstChild.id; //get the date of the first child day of the first child week of the calendarTable
+	var earliestDay = Date.parse(earliestDayID);
+	 while (month.compareTo(earliestDay)==-1){
+	 createPastWeek();
+	 earliestDayID = document.getElementById('calendarTable').firstChild.firstChild.id;
+	 earliestDay = Date.parse(earliestDayID);
+	}
+    });
 });
 	var lastPixelTop = "";
-	var startDate
 if (Date.today().is().sunday()){startDate = Date.today().last().sunday().addDays(-1)} 
 else {startDate = Date.today().last().week().last().sunday().addDays(-1)}
 
@@ -145,7 +159,7 @@ function pageDatepicker(){
 	var pixels = $("#calendarTable").height();
 	var pixelTop = $("#datepicker").scrollTop();
 	document.getElementById('yearDiv').innerHTML= 'pixels = '+pixels+' pixelTop = '+pixelTop
-	 if (pixels-pixelTop*1<220) {
+	 if (pixels-pixelTop*1<221) {
 		createMonth(startDate)
 	};
 	if (pixelTop*1<4 && pixelTop<lastPixelTop){
@@ -153,6 +167,7 @@ function pageDatepicker(){
 	}
 	lastPixelTop = pixelTop;
 }
+
 
 function createYear(){
 	var monthBox = document.getElementById('monthList'); //get the container
@@ -175,6 +190,100 @@ function createYear(){
 	}
 
 }
+
+// function getEvents(){
+	// $.get('json/2013-02/month.json', function(data) {
+  // alert(data);
+  // var day = Date.parse(data.events[0].event['iso-date']);
+  // var eventDate = day.toString('yyyy-MM-dd');
+  // alert(eventDate);
+
+  		var d=0;
+ 	function makeEventDay(date1,data){
+ 		// alert(date1);
+ 		var eventDate = date1.toString('yyyy-MM-dd');
+ 		var dayEventContainer = document.createElement('div');
+ 		dayEventContainer.setAttribute('class',Date.parse(date1).toString('ddd')+' day');
+ 		document.getElementById(Date.parse(eventDate).toString('yyyy-MM')+'-events').appendChild(dayEventContainer);
+ 		var dayEventSpan = document.createElement('span');
+ 		dayEventSpan.setAttribute('class','date-display-single');
+ 		dayEventSpan.innerHTML = Date.parse(date1).toString('dddd');
+ 		dayEventContainer.appendChild(dayEventSpan);
+
+  		var clonedEventSpan = document.createElement('span');
+  		clonedEventSpan.setAttribute('class','date-display-single floatingHeader');
+  		clonedEventSpan.innerHTML = Date.parse(date1).toString('dddd');
+  		dayEventContainer.appendChild(clonedEventSpan);
+	// $('.day').each(function(){
+	// 	clonedHeaderRow = $('.date-display-single', this);
+	// 	clonedHeaderRow
+	// 		.before(clonedHeaderRow.clone())
+	// 		.addClass('floatingHeader');
+
+	// });
+
+ 		 while(Date.parse(data.events[d].event['iso-date']).toString('yyyy-MM-dd') == eventDate){
+  		var inlineEventContainer = document.createElement('div');
+  		inlineEventContainer.setAttribute('class','inline-event-container');
+  		var topThird = document.createElement('div');
+  		topThird.setAttribute('class','top-third');
+  		var whenInlineBlock = document.createElement('div');
+  		whenInlineBlock.setAttribute('class','when inline-block');
+ 		 whenInlineBlock.innerHTML = data.events[d].event.time;
+  		var whatInlineBlock = document.createElement('div');
+  		whatInlineBlock.setAttribute('class','what inline-block');
+  		whatInlineBlock.innerHTML = data.events[d].event['event-name'];
+  		topThird.appendChild(whenInlineBlock);
+  		topThird.appendChild(whatInlineBlock);
+  		inlineEventContainer.appendChild(topThird);
+  		dayEventContainer.appendChild(inlineEventContainer);
+  		d++;
+  		};
+  		// alert('outside d = '+d);
+  		return(d);
+	};
+	var m=0;
+	function makeEventMonth(date){
+		var monthDate = Date.parse(date).toString('yyyy-MM');
+		$.get('json/'+monthDate+'/month.json', function(data){
+			var monthContainer = document.createElement('div');
+			monthContainer.setAttribute('id',monthDate+'-events');
+			var mainContainer = document.getElementById('events-container')
+			mainContainer.innerHTML = '';
+			mainContainer.appendChild(monthContainer);
+			
+			var n = Date.parse(data.events[m].event['iso-date']).toString('yyyy-MM');
+			while(n == monthDate){
+				m = makeEventDay(Date.parse(data.events[m].event['iso-date']).toString('yyyy-MM-dd'),data);
+				// alert(data.events[m].event['event-name']);
+				// m++;
+				n = Date.parse(data.events[m].event['iso-date']).toString('yyyy-MM');
+				date.addDays(1);
+			}
+			
+		});
+
+		// resizeElementHeight();
+		// UpdateTableHeaders();
+
+	}
+
+// });
+// }
+
+// makeEventDay(day)
+// while loop 
+// first create the day container with a day id.
+// then while day of the event == the day of the day container, cycle through the JSON
+// ++
+
+// MakeEventMonth
+// while loop
+// first create the month container with a month id.
+// then while month of the day == month of the month container, makeEventDay(day)
+
+
+
 
 	// $(window).scroll(function(){
 	// 	alert("scrolling!");
