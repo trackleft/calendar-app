@@ -14,7 +14,7 @@ function resizeElementHeight(element) {
   } else if (body && body.clientHeight) {
       height = body.clientHeight;
   }
-   element.style.height = ((height - element.offsetTop - 150) + 'px');
+   element.style.height = ((height - element.offsetTop - 42) + 'px');
 }
 
 onload=createMonth(startDate);
@@ -31,7 +31,7 @@ function UpdateTableHeaders(){
 
 		var el 				= $(this),
 			offset 			= el.offset(),
-			scrollTop		= $(window).scrollTop()+120,
+			scrollTop		= $(window).scrollTop()+52,
 			floatingHeader	= $('.floatingHeader', this)
 
 		if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
