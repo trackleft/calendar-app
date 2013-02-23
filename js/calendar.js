@@ -175,7 +175,7 @@ function createYear(){
 	var k = 0;
 	while (k<12){
 		var month = document.createElement('li'); //create a new list item
-		month.setAttribute('class','key'); //set the class to "key"
+		month.setAttribute('class','key month '+ startMonth.toString('MMM')); //set the class to "key"
 		month.innerHTML = startMonth.toString('MMM');
 		month.setAttribute('id',startMonth.toString('MMM')+"-"+startMonth.toString('yyyy')); //set the id to the year and the month
 		if (startMonth.toString('MMM')==Date.today().toString('MMM')){
