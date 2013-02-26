@@ -1,0 +1,148 @@
+li.key.January:hover{
+background-color: white;
+}
+li.key.February:hover{
+	background-color: blue;
+}
+li.key.March:hover{
+	background-color: purple;
+}
+li.key.April:hover{
+	background-color: orange;
+}
+li.key.May:hover{
+	background-color: red;
+}
+li.key.June:hover{
+	background-color: yellow;
+}
+li.key.July:hover{
+	background-color: pink;
+}
+li.key.August:hover{
+	background-color: beige;
+}
+li.key.September:hover{
+	background-color: brickred;
+}
+li.key.October:hover{
+	background-color: mauve;
+}
+li.key.November:hover{
+	background-color: green;
+}
+li.key.December:hover{
+	background-color: magenta;
+}
+.month{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+}
+.date-display-single{
+	font-family: 'Lato', sans-serif;
+	color: white;
+	font-size: 3em;
+}
+.month-nav li.active{
+    background-color: #002147;
+    color: #FFFFFF;
+}
+
+.Mon .date-display-single {
+	background-color: #3B7303;
+
+}
+.Mon.day{
+    border-left-color: #3B7303;
+    border-bottom-color: #3B7303;
+   } 
+
+.Tue .date-display-single {
+	background-color: #488C04;
+
+}
+.Tue.day{
+  border-left-color:#488C04;
+  border-bottom-color: #488C04;
+}
+
+.Wed .date-display-single {
+	background-color: #55A605;
+
+}
+.Wed.day{
+  border-left-color: #55A605;
+  border-bottom-color:  #55A605;
+}
+
+.Thu .date-display-single {
+	background-color: #5CB305;
+
+}
+.Thu.day{
+    border-left-color:#5CB305;
+    border-bottom-color: #5CB305;
+}
+.Fri .date-display-single {
+	background-color: #69CC06;
+
+}
+.Fri.day{
+    border-left-color:#69CC06;
+    border-bottom-color: #69CC06;
+}
+.Sat .date-display-single {
+	background-color: #7C05F2;
+
+}
+.Sat.day{
+    border-left-color: #7C05F2;
+    border-bottom-color: #7C05F2;
+}
+.Sun .date-display-single {
+	background-color: #5B04B2;
+
+}
+.Sun.day{
+    border-left-color:#5B04B2;
+    border-bottom-color: #5B04B2;
+}
+
+.when{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+.what{
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
+	padding-top: 10px;
+}
+.odd {
+background-color: white;
+}
+.even{
+background-color: rgba(59, 115, 3, .05);
+}
+
+/*.Mon .date-display-single {
+color:rgb(120, 29, 126);
+}
+.Tue .date-display-single {
+color:rgb(212, 146, 179);
+}
+.Wed .date-display-single {
+color: rgb(0, 140, 127);
+}
+.Thu .date-display-single {
+color:rgb(147, 164, 69);
+}
+.Fri .date-display-single {
+color:rgb(87, 39, 0);
+}
+.Sat .date-display-single {
+color:rgb(255, 209, 139);
+}
+.Sun .date-display-single {
+color:rgb(229, 193, 159);
+}*/

@@ -1,0 +1,40 @@
+.branding-banner{
+	position: fixed;
+	top:0;
+	height: 42px;
+	width: 100%;
+	background-color: black;
+	z-index: 5;
+
+}
+
+.date-display-single{
+	display: block;
+	padding: 0px 0px 0px 5px;
+}
+
+.day {
+padding: 0px 0px 0px 0px;
+border-left-width: 4px;
+border-left-style: solid;
+/*border-bottom-width: 1px;
+border-bottom-style: dashed;*/
+}
+
+.floatingHeader {
+position: fixed;
+top: 41px;
+left: 0px;
+margin-left: 4px;
+background: white;
+visibility: hidden;
+width: 100%;
+padding-left: 8px;
+}
+
+#events-container{
+	margin-top: 23px;
+}
+.small-feature .event-feature-image {
+float: right;
+}
