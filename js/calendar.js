@@ -20,10 +20,45 @@ $(document).ready(function() {
 	 earliestDay = Date.parse(earliestDayID);
 	}
     });
+   $('#nextlink').click(function(){
+   	var month = Date.parse(this.name);
+   	console.log(month);
+   	while (month.compareTo(startDate)==1){
+   	 	createMonth(startDate);
+   	 }
+   	 this.setAttribute('href','#'+month.add(1).months().toString('yyyy-MM-dd'));
+   	 this.setAttribute('name',month.toString('yyyy-MMM'));
+   	 document.getElementById('previouslink').setAttribute('href','#'+month.toString('yyyy-MM-dd'));
+   	 document.getElementById('previouslink').setAttribute('name',month.toString('yyyy-MMM'));
+
+   })
+   $('#previouslink').click(function(){
+   	var month = Date.parse(this.name);
+   	console.log(month);
+   	var earliestDayID = document.getElementById('calendarTable').firstChild.firstChild.id; //get the date of the first child day of the first child week of the calendarTable
+	var earliestDay = Date.parse(earliestDayID);
+	 	while (month.compareTo(earliestDay)==-1){
+	 		createPastWeek();
+	 		earliestDayID = document.getElementById('calendarTable').firstChild.firstChild.id;
+	 		earliestDay = Date.parse(earliestDayID);
+		}
+   	 this.setAttribute('href','#'+month.add(-1).months().toString('yyyy-MM-dd'));
+   	 this.setAttribute('name',month.toString('yyyy-MMM'));
+   	 document.getElementById('nextlink').setAttribute('href','#'+month.toString('yyyy-MM-dd'));
+   	 document.getElementById('nextlink').setAttribute('name',month.toString('yyyy-MMM'));
+   })
+   $('#todaylink').click(function(){
+   	var month = Date.today();
+   	document.getElementById('previouslink').setAttribute('href','#'+month.toString('yyyy-MM-dd'));
+   	 document.getElementById('previouslink').setAttribute('name',month.toString('yyyy-MMM'));
+   	 document.getElementById('nextlink').setAttribute('href','#'+month.toString('yyyy-MM-dd'));
+   	 document.getElementById('nextlink').setAttribute('name',month.toString('yyyy-MMM'));
+   })
 });
 	var lastPixelTop = "";
-if (Date.today().is().sunday()){startDate = Date.today().last().sunday().addDays(-1)} 
-else {startDate = Date.today().last().week().last().sunday().addDays(-1)}
+// if (Date.today().is().sunday()){startDate = Date.today().last().sunday().addDays(-1)} 
+// else {startDate = Date.today().last().week().last().sunday().addDays(-1)}
+startDate = Date.today().add(-2).months().sunday().addDays(-1);
 
 function createWeek(startDate){
 	var weekNumber = startDate.getISOWeek();
@@ -48,13 +83,24 @@ function createWeek(startDate){
 			monthClass = 'oddMonth';
 		};
 		var fullDate = yearNumber+'-'+monthNumber+'-'+dayNumber;
+		
 		var eventDayAnchor = document.createElement('a');
 		eventDayAnchor.setAttribute('href','#date-'+fullDate);
 		var day = document.createElement('td');
 		var dayClass = dayName+' picker-day '+monthClass;
 				if (Date.today().compareTo(date)==0) {
 					dayClass = dayClass+' today';
+					var previousMonth = Date.today().add(-1).months().toString('yyyy-MMM');
+					var previousMonthNumber = Date.today().add(-1).months().toString('MM');
+					console.log(previousMonth);
+					console.log(fullDate);
+					var nextMonth = Date.today().toString('yyyy-MMM');
+					var nextMonthNumber = Date.today().toString('MM');
 					document.getElementById('todaylink').setAttribute('href','#'+fullDate);
+					document.getElementById('previouslink').setAttribute('name',nextMonth);
+					document.getElementById('previouslink').setAttribute('href','#'+yearNumber+'-'+monthNumber+'-01');
+					document.getElementById('nextlink').setAttribute('name',nextMonth);
+					document.getElementById('nextlink').setAttribute('href','#'+yearNumber+'-'+monthNumber+'-01');
 				};
 				if (Date.today().compareTo(date)==1) {
 					dayClass = dayClass+' past-day';
@@ -81,7 +127,7 @@ function createWeek(startDate){
 
 function createMonth(startDate){
 	var j = 0;
-	while (j<8){
+	while (j<20){
 		createWeek(startDate);
 		j++;
 	}
@@ -318,7 +364,7 @@ function createYear(){
 	var n;
 	function makeEventMonth(date){
 		var monthDate = Date.parse(date).toString('yyyy-MM');
-		$.get('../json/'+monthDate+'/month.json', function(data){
+		$.get('json/'+monthDate+'/month.json', function(data){
 			var monthContainer = document.createElement('div');
 			monthContainer.setAttribute('id',monthDate+'-events');
 			var mainContainer = document.getElementById('events-container');
