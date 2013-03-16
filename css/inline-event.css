@@ -49,27 +49,74 @@ padding-left: 15px;
 }
 .inline-event-container {
 width: 100%;
-margin-bottom: 10px;
+margin-bottom: 0px;
+padding-bottom: 10px;
+padding-top: 4px;
+margin-top: 4px;
 }
 .event-small-image {
 	max-width: 200px;
 	margin-right: 10px;
 }
-.when {
-	font-size: 1.7525em;
-	vertical-align: top;
-	width: 24%;
+
+  .when {
+font-size: 1.5em;
+vertical-align: middle;
+width: 100%;
+}
+.Mon.day .what.inline-block{
+background-color: rgba(120, 29, 126, .1);
+border: 1px solid rgb(239, 239, 239);
+}
+.Tue.day .what.inline-block{
+background-color: rgba(212, 146, 179, .1);
+border: 1px solid rgb(239, 239, 239);
+}
+.Wed.day .what.inline-block{
+border: 1px solid rgb(239, 239, 239);
+background-color:rgba(0, 140, 127, .1);
+}
+.Thu.day .what.inline-block {
+background-color: rgba(147, 164, 69, 0.1);
+border: 1px solid rgb(239, 239, 239);
+}
+.Fri.day .what.inline-block{
+border: 1px solid rgb(239, 239, 239);
+background-color: rgba(87, 39, 0, .1);
+}
+.Sat.day .what.inline-block {
+background-color: rgba(255, 209, 139, .1);
+border: 1px solid rgb(239, 239, 239);
+}
+.Sun.day .what.inline-block{
+background-color: rgba(229, 193, 159, .1);
+border: 1px solid rgb(239, 239, 239);
 }
 
 .what {
-	width: 75%;
-/*	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;*/
+border-top: 1px solid #EFEFEF;
+border-left: 1px solid #EFEFEF;
+border-right: 1px solid #EFEFEF;
+padding: 8px 8px 8px 8px;
+width: 73%;
 }
-.event-details{
-	margin-left: 24%;
+.event-details {
+margin-left: 25%;
+border: 1px solid #EFEFEF;
+width: 72%;
+padding: 4px;
+border-top: 0;
+padding: 8px;
+background-image: url(/calendar-app/img/brillant.png);
 }
 .feature {
 position: relative;
+background-color: white;
+margin-top: -13px;
+padding-top: 1px;
+padding-left: 8px;
+padding-right: 8px;
+padding-bottom: 8px;
 }
 .non-feature {
 	min-height: 60px;
@@ -382,4 +429,32 @@ box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05
 
 img.image-100 {
 	width:100%;
+}
+img.image-50 {
+width: 100%;
+}
+/***********************************************************
+ *
+ * 600px to 900px width
+ *
+ ***********************************************************/
+@media only screen and (min-width:600px) {
+  .when {
+font-size: 1.5em;
+vertical-align: top;
+width: 25%;
+}
+.what {
+width: 72%;
+}
+.event-details{
+  margin-left: 25%;
+}
+}
+
+@media only screen and (min-width:960px) {
+.img-50{
+width:50%;
+}
+
 }

@@ -1,7 +1,7 @@
 $('#mobile-button').click( function() { 
 $("#calendar-fixed-filter").css('-webkit-transform', 'translate3d(0px, 0px, 0px)');
 });
-
+// Can also be used with $(document).ready()
 //Making the page responsive.
 function resizeElementHeight(element) {
   var element=document.getElementById('calendar-filters');
@@ -24,51 +24,52 @@ onload=makeEventMonth(Date.today());
 onload=resizeElementHeight;
 window.onresize=resizeElementHeight;
 
-
 //The function that makes the dated headers float.
 function UpdateTableHeaders(){
 	$('.day').each(function(){
 
 		var el 				= $(this),
 			offset 			= el.offset(),
-			scrollTop		= $(window).scrollTop()+52,
+			scrollTop		= $(window).scrollTop()+72,
 			floatingHeader	= $('.floatingHeader', this)
 
-		if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height())) {
+		if ((scrollTop > offset.top) && (scrollTop < offset.top + el.height() - 42)) {
 			floatingHeader.css({
 				'visibility': 'visible'
 			});
 		}
-			else {
-           floatingHeader.css({
-            "visibility": "hidden"
-           });      
-      
-
-
-		};
-	});
+		if (offset.top + el.height() - 43 > scrollTop && scrollTop > offset.top + el.height() - 42) {
+		 	floatingHeader.css({
+		 		'visibility': 'visible',
+		 		'position'  : 'absolute',
+		 		'top'       : 'auto',
+		 		'bottom'    : '0px',
+		 		'left' 		: '-12px'
+		 	});
+		 }
+		 else {
+                       floatingHeader.css({
+                                 "visibility": "hidden"
+                       });      
+      		 };
+       	});
 }
 
-	$(function(){
-
+$(function(){
 	var clonedHeaderRow;
-
 	$('.day').each(function(){
 		clonedHeaderRow = $('.date-display-single', this);
 		clonedHeaderRow
 			.before(clonedHeaderRow.clone())
-			.addClass('floatingHeader');
-
+ 			.addClass('floatingHeader');
 	});
-
-$(window)
+	$(window)
 	.scroll(UpdateTableHeaders)
 	.trigger('scroll');
 });
 	$('#datepicker').scroll(function(){
 		pageDatepicker();
-	});
+});
 
 
   // $(function() {

@@ -35,6 +35,7 @@ function createWeek(startDate){
 	// document.getElementById('yearDiv').innerHTML = yearNumber;
 	var i = 0;
 	while (i<7){
+
 		var date = startDate.addDays(1); 
 		var dayNumber = date.toString('dd');
 		var dayName = date.toString('dddd');
@@ -47,6 +48,8 @@ function createWeek(startDate){
 			monthClass = 'oddMonth';
 		};
 		var fullDate = yearNumber+'-'+monthNumber+'-'+dayNumber;
+		var eventDayAnchor = document.createElement('a');
+		eventDayAnchor.setAttribute('href','#date-'+fullDate);
 		var day = document.createElement('td');
 		var dayClass = dayName+' picker-day '+monthClass;
 				if (Date.today().compareTo(date)==0) {
@@ -64,11 +67,12 @@ function createWeek(startDate){
 		dayDiv.setAttribute('class','dayDiv');
 		var monDiv = document.createElement('div');
 		monDiv.setAttribute('class','monDiv');
+		day.appendChild(eventDayAnchor);
 		document.getElementById(weekID).appendChild(day);
 		var dateBox = document.getElementById(fullDate)
-		dateBox.appendChild(linkAnchor);
-		dateBox.appendChild(monDiv);
-		dateBox.appendChild(dayDiv);
+		eventDayAnchor.appendChild(linkAnchor);
+		eventDayAnchor.appendChild(monDiv);
+		eventDayAnchor.appendChild(dayDiv);
 		monDiv.innerHTML = monthName;
 		dayDiv.innerHTML = dayNumber;
 		i++;
@@ -175,7 +179,7 @@ function createYear(){
 	var k = 0;
 	while (k<12){
 		var month = document.createElement('li'); //create a new list item
-		month.setAttribute('class','key'); //set the class to "key"
+		month.setAttribute('class','key month '+ startMonth.toString('MMMM')); //set the class to "key"
 		month.innerHTML = startMonth.toString('MMM');
 		month.setAttribute('id',startMonth.toString('MMM')+"-"+startMonth.toString('yyyy')); //set the id to the year and the month
 		if (startMonth.toString('MMM')==Date.today().toString('MMM')){
@@ -207,12 +211,15 @@ function createYear(){
  		document.getElementById(Date.parse(eventDate).toString('yyyy-MM')+'-events').appendChild(dayEventContainer);
  		var dayEventSpan = document.createElement('span');
  		dayEventSpan.setAttribute('class','date-display-single');
- 		dayEventSpan.innerHTML = Date.parse(date1).toString('dddd');
+ 		var dayEventAnchor = document.createElement('a');
+ 		dayEventAnchor.setAttribute('name','date-'+eventDate);
+ 		dayEventContainer.appendChild(dayEventAnchor);
+ 		dayEventSpan.innerHTML = Date.parse(date1).toString('dddd MMMM dd');
  		dayEventContainer.appendChild(dayEventSpan);
 
   		var clonedEventSpan = document.createElement('span');
   		clonedEventSpan.setAttribute('class','date-display-single floatingHeader');
-  		clonedEventSpan.innerHTML = Date.parse(date1).toString('dddd');
+  		clonedEventSpan.innerHTML = Date.parse(date1).toString('dddd MMMM dd');
   		dayEventContainer.appendChild(clonedEventSpan);
 	// $('.day').each(function(){
 	// 	clonedHeaderRow = $('.date-display-single', this);
@@ -221,10 +228,15 @@ function createYear(){
 	// 		.addClass('floatingHeader');
 
 	// });
-
+  		var isOdd = true;
+  		
  		 while(Date.parse(data.events[d].event['iso-date']).toString('yyyy-MM-dd') == eventDate){
+
   		var inlineEventContainer = document.createElement('div');
-  		inlineEventContainer.setAttribute('class','inline-event-container');
+  		inlineEventContainer.setAttribute('class','inline-event-container even');
+  		if(isOdd){
+  			inlineEventContainer.setAttribute('class','inline-event-container odd');
+  		}
   		var topThird = document.createElement('div');
   		topThird.setAttribute('class','top-third');
   		var whenInlineBlock = document.createElement('div');
@@ -237,19 +249,80 @@ function createYear(){
   		topThird.appendChild(whatInlineBlock);
   		inlineEventContainer.appendChild(topThird);
   		dayEventContainer.appendChild(inlineEventContainer);
+  		if(data.events[d].event.feature=='1'){
+  			jQuery(inlineEventContainer).addClass('large-feature');
+  			var eventDetails = document.createElement('div');
+  			eventDetails.setAttribute('class','event-details');
+  			var eventFeatureImage = document.createElement('div');
+  			eventFeatureImage.setAttribute('class','event-feature-image');
+  			var eventImage = document.createElement('img');
+  			eventImage.setAttribute('class','image-100')
+  			eventImage.setAttribute('src',data.events[d].event.image);
+  			eventFeatureImage.appendChild(eventImage);
+  			eventDetails.appendChild(eventFeatureImage);
+  			inlineEventContainer.appendChild(eventDetails);
+  			//add a large image
+  		}
+  		else if(data.events[d].event.feature=='2'){
+  			jQuery(inlineEventContainer).addClass('small-feature');
+  			 var eventDetails = document.createElement('div');
+  			eventDetails.setAttribute('class','event-details');
+  			var eventFeatureImage = document.createElement('div');
+  			eventFeatureImage.setAttribute('class','event-feature-image');
+  			var eventImage = document.createElement('img');
+  			eventImage.setAttribute('class','image-50');
+  			eventImage.setAttribute('src',data.events[d].event.image);
+  			eventFeatureImage.appendChild(eventImage);
+  			eventDetails.appendChild(eventFeatureImage);
+  			var emptyDiv = document.createElement('div');
+  			emptyDiv.setAttribute('class','clear-fix');
+  			var featureDiv = document.createElement('div');
+  			featureDiv.setAttribute('class','feature');
+  			var descriptionP = document.createElement('p');
+  			descriptionP.innerHTML = data.events[d].event.description;
+  			featureDiv.appendChild(descriptionP);
+  			eventDetails.appendChild(featureDiv);
+
+  			eventDetails.appendChild(emptyDiv);
+  			inlineEventContainer.appendChild(eventDetails);
+  			//add a small image
+  		}
+
   		d++;
+  		if(data.events[d]==undefined){return 'x'};
+  		if(isOdd == true){isOdd = false;}
+  		else{isOdd = true;}
   		};
-  		// alert('outside d = '+d);
+  		  		if(date1==Date.today().toString('yyyy-MM-dd')){
+  		  			console.log(date1+'is today')
+  			var ongoingEventsContainer = document.createElement('div');
+  			ongoingEventsContainer.setAttribute('id','ongoing-events-container');
+  			ongoingEventsContainer.setAttribute('class','ongoing-events');
+  			makeOngoingEvents();
+  			dayEventContainer.appendChild(ongoingEventsContainer);	
+  			$('#ongoing-events-container').load(function(){
+  			  $('#ongoing-events-container').flexslider({
+    				animation: "slide",
+    				animationLoop: false,
+    				itemWidth: 210,
+    				itemMargin: 5,
+    				minItems: 2,
+    				maxItems: 4
+  				});		});
+                         UpdateTableHeaders();
+  		}
   		return(d);
 	};
+
 	var m=0;
+	var n;
 	function makeEventMonth(date){
 		var monthDate = Date.parse(date).toString('yyyy-MM');
-		$.get('json/'+monthDate+'/month.json', function(data){
+		$.get('../json/'+monthDate+'/month.json', function(data){
 			var monthContainer = document.createElement('div');
 			monthContainer.setAttribute('id',monthDate+'-events');
-			var mainContainer = document.getElementById('events-container')
-			mainContainer.innerHTML = '';
+			var mainContainer = document.getElementById('events-container');
+			// mainContainer.innerHTML = '';
 			mainContainer.appendChild(monthContainer);
 			
 			var n = Date.parse(data.events[m].event['iso-date']).toString('yyyy-MM');
@@ -257,17 +330,60 @@ function createYear(){
 				m = makeEventDay(Date.parse(data.events[m].event['iso-date']).toString('yyyy-MM-dd'),data);
 				// alert(data.events[m].event['event-name']);
 				// m++;
+				if(m=='x'){
+					m=0;
+					d=0;
+					date.add(1).months();
+					makeEventMonth(date);
+					return;
+				}
+					else{
 				n = Date.parse(data.events[m].event['iso-date']).toString('yyyy-MM');
-				date.addDays(1);
+					}
 			}
-			
 		});
-
-		// resizeElementHeight();
-		// UpdateTableHeaders();
-
-	}
-
+		$('.flexslider').flexslider({
+    		animation: "slide",
+    		animationLoop: false,
+    		itemWidth: 210,
+    		itemMargin: 5
+  		});
+ 	}  //close makeEventMonth
+function makeOngoingEvents(){
+	$.get('../json/ongoing.json', function(data){
+		var ongoingEventsDiv = document.getElementById('ongoing-events-container');
+		var ongoingFlexSlider = document.createElement('div');
+                ongoingFlexSlider.setAttribute('class','flexslider');
+                ongoingEventsDiv.appendChild(ongoingFlexSlider);
+		var slides = document.createElement('ul');
+		slides.setAttribute('class','slides');
+		ongoingFlexSlider.appendChild(slides);
+		var p = 0;
+		while(p<9){
+			var listItemElement = document.createElement('li');
+			var ongoingDate = document.createElement('p');
+			ongoingDate.setAttribute('class','ongoing-date');
+			ongoingDate.innerHTML = data.events[p].event['ongoing-date'];
+			var eventName = document.createElement('p');
+			eventName.setAttribute('class','ui-sans ongoing-what');
+			eventName.innerHTML = data.events[p].event['event-name'];
+			var permalink = document.createElement('a');
+			permalink.setAttribute('href',data.events[p].event.permalink);
+			permalink.setAttribute('class','permalink');
+			permalink.innerHTML = "Permalink";
+			var eventImage = document.createElement('img');
+		//	eventImage.style.width='100px';
+		//	eventImage.style.height='10px';
+			eventImage.setAttribute('src',data.events[p].event.image);
+			listItemElement.appendChild(eventImage);
+                        listItemElement.appendChild(eventName);
+                        listItemElement.appendChild(ongoingDate);
+                        listItemElement.appendChild(permalink);
+			slides.appendChild(listItemElement);
+			p++
+		}
+	})
+}
 // });
 // }
 
