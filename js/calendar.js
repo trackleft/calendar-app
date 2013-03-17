@@ -1,12 +1,25 @@
 	var startDate;
 
 $(document).ready(function() {
-   $.localScroll({
+   $('.month-nav').localScroll({
    	duration:800,
    	target:'#datepicker',
    	lazy:true,
    	hash:false
    	});
+   $('#month-nav-fallback').localScroll({
+   	duration:800,
+   	target:'#datepicker',
+   	lazy:true,
+   	hash:false
+   	});
+   $('.picker-day').localScroll({
+   	duration:800,
+   	// target:'',
+   	lazy:true,
+   	hash:false,
+   	offset:-100
+   })
    $('#monthList a').click(function(){
    	var month = Date.parse(this.firstChild.id);
    	 while (month.compareTo(startDate)==1){
@@ -232,7 +245,7 @@ function createYear(){
 		month.setAttribute('class','key today');
 		} //check if it's this month and apply active class
 		var monthLink = document.createElement('a');
-		monthLink.setAttribute('href','#'+startMonth.toString('yyyy')+'-'+startMonth.toString('MM')+'-01')
+		monthLink.setAttribute('href','#'+startMonth.toString('yyyy-MM')+'-01')
 		monthLink.appendChild(month);
 		monthBox.appendChild(monthLink);
 		startMonth.addMonths(1); //add a month to current month
