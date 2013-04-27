@@ -377,7 +377,8 @@ function createYear(){
 	var n;
 	function makeEventMonth(date){
 		var monthDate = Date.parse(date).toString('yyyy-MM');
-		$.get('json/'+monthDate+'/month.json', function(data){
+		$.getJSON('http://uanews.org/json/'+monthDate+'/month.json&callback=?', function(data){
+			console.log(data);
 			var monthContainer = document.createElement('div');
 			monthContainer.setAttribute('id',monthDate+'-events');
 			var mainContainer = document.getElementById('events-container');
@@ -393,7 +394,7 @@ function createYear(){
 					m=0;
 					d=0;
 					date.add(1).months();
-					makeEventMonth(date);
+					// makeEventMonth(date);
 					return;
 				}
 					else{
